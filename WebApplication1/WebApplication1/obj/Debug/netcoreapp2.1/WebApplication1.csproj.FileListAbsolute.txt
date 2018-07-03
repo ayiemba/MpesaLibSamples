@@ -24,3 +24,10 @@ C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\obj
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.RazorTargetAssemblyInfo.cache
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.RazorTargetAssemblyInfo.cs
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\bin\Debug\netcoreapp2.1\WebApplication1.pdb
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\bin\Debug\netcoreapp2.1\WebApplication1.Views.dll
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\bin\Debug\netcoreapp2.1\WebApplication1.Views.pdb
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.Views.pdb
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.dll
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.pdb
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\WebApplication1.csproj.CopyComplete

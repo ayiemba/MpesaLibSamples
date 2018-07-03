@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "53ee6768905f1ac8e371300207c1fac4255119da"
+    "signature": "0cb9263314394fba1b6c89072e9855367c706d77"
   },
   "compilationOptions": {
     "defines": [
@@ -25,13 +25,30 @@
       "WebApplication1/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.App": "2.1.1",
-          "Microsoft.NETCore.App": "2.1.1"
+          "Microsoft.NETCore.App": "2.1.1",
+          "MpesaLib": "1.0.7"
         },
         "runtime": {
           "WebApplication1.dll": {}
         },
         "compile": {
           "WebApplication1.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Http.Polly/2.1.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Http": "2.1.1",
+          "Polly": "6.0.1",
+          "Polly.Extensions.Http": "2.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.Polly.dll": {
+            "assemblyVersion": "2.1.1.0",
+            "fileVersion": "2.1.1.18157"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Http.Polly.dll": {}
         }
       },
       "Microsoft.NETCore.App/2.1.1": {
@@ -200,9 +217,53 @@
       },
       "Microsoft.NETCore.Platforms/2.1.0": {},
       "Microsoft.NETCore.Targets/2.0.0": {},
+      "MpesaLib/1.0.7": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "2.1.1",
+          "Microsoft.Extensions.Http": "2.1.1",
+          "Microsoft.Extensions.Http.Polly": "2.1.1",
+          "Microsoft.Extensions.Logging": "2.1.1",
+          "Microsoft.Extensions.Logging.Console": "2.1.1",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MpesaLib.dll": {
+            "assemblyVersion": "1.0.7.0",
+            "fileVersion": "1.0.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/MpesaLib.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.0"
+        }
+      },
+      "Polly/6.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Polly.dll": {}
+        }
+      },
+      "Polly.Extensions.Http/2.0.1": {
+        "dependencies": {
+          "Polly": "6.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Polly.Extensions.Http.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Polly.Extensions.Http.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3156,6 +3217,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microsoft.Extensions.Http.Polly/2.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zbUXhvwjnF6dUdiJL3U14McSPyUxhim7wwGnRXIFm1MoCKqJgmanpPio/ROLq3yXDEDOaGjVogBF92YBLQ2ntA==",
+      "path": "microsoft.extensions.http.polly/2.1.1",
+      "hashPath": "microsoft.extensions.http.polly.2.1.1.nupkg.sha512"
+    },
     "Microsoft.NETCore.App/2.1.1": {
       "type": "package",
       "serviceable": true,
@@ -3198,12 +3266,33 @@
       "path": "microsoft.netcore.targets/2.0.0",
       "hashPath": "microsoft.netcore.targets.2.0.0.nupkg.sha512"
     },
+    "MpesaLib/1.0.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mFaSnu2Lg8rNnVBQjUXXrJ5+DiIfsY3RZoKjbf3d9LjVAbudl1tZ2qbuLW+nYQ+uFnKEzyaxK1w+ztHgtx4WwA==",
+      "path": "mpesalib/1.0.7",
+      "hashPath": "mpesalib.1.0.7.nupkg.sha512"
+    },
     "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Polly/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nwL8qNLkrphkehUftQqJZOExH6sJ+PPWhkrksqoouAvy9TuEgYUjFujlUVC8PyYLIWIneR9R4opcFpPKn1HQ1A==",
+      "path": "polly/6.0.1",
+      "hashPath": "polly.6.0.1.nupkg.sha512"
+    },
+    "Polly.Extensions.Http/2.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9NPDm98bmtlzLHnMDJ4YHno88yZmBOzvks34coP73/1GJzabSUi217xISa4z+b7YO5TncZMQVM4O5ThlZwg8mQ==",
+      "path": "polly.extensions.http/2.0.1",
+      "hashPath": "polly.extensions.http.2.0.1.nupkg.sha512"
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",
