@@ -42,13 +42,13 @@ namespace WebApplication1.Controllers
             //C2BRegisterUrls
             CustomerToBusinessRegister registerUrl = new CustomerToBusinessRegister
             {
-                ConfirmationURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
-                ValidationURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
+                ConfirmationURL = "https://demo.osl.co.ke:7575/api/callback",
+                ValidationURL = "https://demo.osl.co.ke:7575/api/callback",
                 ResponseType = "Cancelled",
                 ShortCode = "603047"
             };
 
-            await _mpesaClient.RegisterC2BUrlAsync(registerUrl, accesstoken, "c2b/v1/registerurl");
+           // var ulrregistration = await _mpesaClient.RegisterC2BUrlAsync(registerUrl, accesstoken, "c2b/v1/registerurl");
 
 
             //C2B
@@ -95,13 +95,15 @@ namespace WebApplication1.Controllers
                 SecurityCredential = "UzQmvbTuYv6eBJh+ECRhsnpESnvXAiqvrsG5gKPDnrgTVgIJfNhOd0REVcg9Y1xOrkkbv2+oxCOQnMZ1/PFHYaX50ikChzE/P9I1npZm/PWhZYmxWaddz9QmxyNF9XPiADXgj83SFvsrvbQ/ukSzSP+NeA/O2KOOjiu41lOijIXdNCo/Orvg/BIKAwbsEayhWCm0GxJt44Ony/jKGQiTT7KGDEalI4ETwROLu4YUwswyxlRi6GgNOXS12+GnggTxNr8ncRL67XT3vxe1iTD2XkebXWaOD5ep0cTXEN7xB89Br5BdpqEwUMVAp5AmN6uL0IPG3hEWz1ndGX40XVq7og=="
             };
 
-            var b2cRequest = await _mpesaClient.MakeB2CPaymentAsync(b2c, accesstoken, "b2c/v1/paymentrequest");
+            //var b2cRequest = await _mpesaClient.MakeB2CPaymentAsync(b2c, accesstoken, "b2c/v1/paymentrequest");
 
-            ViewData["Message"] = c2bRequest; 
+           // ViewData["Message0"] = ulrregistration;
+
+            ViewData["Message1"] = c2bRequest; 
 
             ViewData["Message2"] = lipaNaMpesa;
 
-            ViewData["Message3"] = b2cRequest;
+            //ViewData["Message3"] = b2cRequest;
 
             return View();
         }
