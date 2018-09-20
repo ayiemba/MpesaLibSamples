@@ -42,8 +42,8 @@ namespace WebApplication1.Controllers
             //C2BRegisterUrls
             CustomerToBusinessRegister registerUrl = new CustomerToBusinessRegister
             {
-                ConfirmationURL = "https://demo.osl.co.ke:7575/api/callback",
-                ValidationURL = "https://demo.osl.co.ke:7575/api/callback",
+                ConfirmationURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
+                ValidationURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
                 ResponseType = "Cancelled",
                 ShortCode = "603047"
             };
