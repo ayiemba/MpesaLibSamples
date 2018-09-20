@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MpesaLib.Clients;
+using MpesaLib.Interfaces;
 using MpesaLib.Models;
 
 namespace WebApplication1
@@ -33,9 +34,8 @@ namespace WebApplication1
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddHttpClient<AuthClient>();
-            services.AddHttpClient<C2BSimulateClient>();
-            services.AddHttpClient<LipaNaMpesaOnlineClient>();
+            //ADD MPESA SERVICE
+            services.AddHttpClient<IMpesaClient, MpesaClient>(options => options.BaseAddress = new Uri("https://sandbox.safaricom.co.ke/"));
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

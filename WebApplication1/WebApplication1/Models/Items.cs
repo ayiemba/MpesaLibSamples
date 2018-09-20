@@ -30,7 +30,7 @@ namespace WebApplication1.Models
                 CallBackURL = "http://mockbin.org/bin/7e613f32-e00a-48d3-86e4-9088e4f96ffa",
                 Password = "M0bileST!!",
                 PhoneNumber = "254708374149",
-                Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString(),
+               
                 TransactionDesc = "test"
 
             };
@@ -38,7 +38,7 @@ namespace WebApplication1.Models
             public CustomerToBusinessSimulate c2b = new CustomerToBusinessSimulate
             {
                 ShortCode = "600157",
-                Amount = "10",
+                Amount = "1000",
                 BillRefNumber = "",
                 Msisdn = "254708374149"
             };
