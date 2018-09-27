@@ -34,7 +34,7 @@ namespace WebApplication2.Controllers
             //Initialize HttpClient
             HttpClient httpClient = new HttpClient();
             
-            //Handle TLS Issues
+            //Handle TLS Issues Necessary for .Netframework 45 and .Netframework 40
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
             httpClient.BaseAddress = new Uri("https://sandbox.safaricom.co.ke/");

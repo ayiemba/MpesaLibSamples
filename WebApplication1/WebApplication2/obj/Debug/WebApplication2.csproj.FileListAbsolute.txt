@@ -45,6 +45,7 @@ C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\System.Web.WebPages.Razor.dll
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\WebGrease.dll
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\MpesaLib.pdb
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\Newtonsoft.Json.xml
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\RestSharp.xml
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\System.Web.Helpers.xml
