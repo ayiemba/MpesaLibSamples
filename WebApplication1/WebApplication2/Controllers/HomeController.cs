@@ -16,7 +16,7 @@ namespace WebApplication2.Controllers
     public class HomeController : Controller
     {
 
-        /** For MpesaLib versions >= 2.0.5*/
+        /** For MpesaLib versions >= 2.1.0*/
 
         public HomeController()
         {
@@ -48,11 +48,11 @@ namespace WebApplication2.Controllers
 
             var passKey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";// _configuration["MpesaConfiguration:PassKey"];
 
-            //Get Token
+            //Request Token (tokens expires after an hour, implement some chaing mechnism)
             var accesstoken = await _mpesaClient.GetAuthTokenAsync(consumerKey, consumerSecret, "oauth/v1/generate?grant_type=client_credentials");
 
 
-            //C2BRegisterUrls
+            //Register C2B Urls Object
             CustomerToBusinessRegister registerUrl = new CustomerToBusinessRegister
             {
                 ConfirmationURL = "https://demo.osl.co.ke:7575/geospatial",
@@ -64,7 +64,8 @@ namespace WebApplication2.Controllers
             //var ulrregistration = await _mpesaClient.RegisterC2BUrlAsync(registerUrl, accesstoken, "mpesa/c2b/v1/registerurl");
 
 
-            //C2B
+
+            //C2B Object
             CustomerToBusinessSimulate c2b = new CustomerToBusinessSimulate
             {
                 ShortCode = "603047",
@@ -72,28 +73,32 @@ namespace WebApplication2.Controllers
                 BillRefNumber = "account",
                 Msisdn = "254708374149",
             };
+
+            //C2B request
             var c2bRequest = await _mpesaClient.MakeC2BPaymentAsync(c2b, accesstoken, "mpesa/c2b/v1/simulate");
 
 
 
-            //LipaNaMpesaOnline
+            //LipaNaMpesaOnline Object
             LipaNaMpesaOnline lipaOnline = new LipaNaMpesaOnline
             {
                 AccountReference = "test",
                 Amount = "1",
-                PartyA = "254725589166",
+                PartyA = "2547XXXXXXX", //please replace with your own number
                 PartyB = "174379",
                 BusinessShortCode = "174379",
                 CallBackURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
-                PhoneNumber = "254725589166",
+                PhoneNumber = "2547XXXXXXXX", //replace with your own number
                 Passkey = passKey,
                 TransactionDesc = "test"
 
             };
+
+            //LipanaMpesaOnline (STK Push) request
             var lipaNaMpesa = await _mpesaClient.MakeLipaNaMpesaOnlinePaymentAsync(lipaOnline, accesstoken, "mpesa/stkpush/v1/processrequest");
 
 
-            //B2C
+            //B2C Object
             BusinessToCustomer b2c = new BusinessToCustomer
             {
                 Remarks = "test",
@@ -108,10 +113,11 @@ namespace WebApplication2.Controllers
                 SecurityCredential = "UzQmvbTuYv6eBJh+ECRhsnpESnvXAiqvrsG5gKPDnrgTVgIJfNhOd0REVcg9Y1xOrkkbv2+oxCOQnMZ1/PFHYaX50ikChzE/P9I1npZm/PWhZYmxWaddz9QmxyNF9XPiADXgj83SFvsrvbQ/ukSzSP+NeA/O2KOOjiu41lOijIXdNCo/Orvg/BIKAwbsEayhWCm0GxJt44Ony/jKGQiTT7KGDEalI4ETwROLu4YUwswyxlRi6GgNOXS12+GnggTxNr8ncRL67XT3vxe1iTD2XkebXWaOD5ep0cTXEN7xB89Br5BdpqEwUMVAp5AmN6uL0IPG3hEWz1ndGX40XVq7og=="
             };
 
+            //B2C request
             var b2cRequest = await _mpesaClient.MakeB2CPaymentAsync(b2c, accesstoken, "mpesa/b2c/v1/paymentrequest");
 
 
-            //B2B
+            //B2B Object
             BusinessToBusiness b2bobject = new BusinessToBusiness
             {
                 AccountReference = "test",
@@ -128,8 +134,14 @@ namespace WebApplication2.Controllers
                 Remarks = "payment"
             };
 
+            //B2B request
             var b2brequest = await _mpesaClient.MakeB2BPaymentAsync(b2bobject, accesstoken, "mpesa/b2b/v1/paymentrequest");
 
+            /*
+             * I am printing the results on the About page
+             * You should deserialize and do other stuff with the results
+             */
+            
             //ViewData["Message0"] = ulrregistration;
 
             ViewData["Message1"] = c2bRequest;
