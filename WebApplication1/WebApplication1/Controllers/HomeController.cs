@@ -6,7 +6,9 @@ using Microsoft.Extensions.Configuration;
 using MpesaLib.Clients;
 using MpesaLib.Interfaces;
 using MpesaLib.Models;
+using MpesaLib.Helpers;
 using WebApplication1.Models;
+using System.Security.Cryptography.X509Certificates;
 
 namespace WebApplication1.Controllers
 {
@@ -80,6 +82,15 @@ namespace WebApplication1.Controllers
             var lipaNaMpesa = await _mpesaClient.MakeLipaNaMpesaOnlinePaymentAsync(lipaOnline, accesstoken, "mpesa/stkpush/v1/processrequest");
 
 
+            //Security Credentials
+            string certificate = @"C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\Certificate\prod.cer";
+           
+
+            var B2CsecurityCred = Credentials.EncryptPassword(certificate, "971796");
+
+            Console.WriteLine(B2CsecurityCred);
+
+
             //B2C
             BusinessToCustomer b2c = new BusinessToCustomer
             {
@@ -92,7 +103,7 @@ namespace WebApplication1.Controllers
                 PartyB = "254708374149",
                 QueueTimeOutURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
                 ResultURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
-                SecurityCredential = "UzQmvbTuYv6eBJh+ECRhsnpESnvXAiqvrsG5gKPDnrgTVgIJfNhOd0REVcg9Y1xOrkkbv2+oxCOQnMZ1/PFHYaX50ikChzE/P9I1npZm/PWhZYmxWaddz9QmxyNF9XPiADXgj83SFvsrvbQ/ukSzSP+NeA/O2KOOjiu41lOijIXdNCo/Orvg/BIKAwbsEayhWCm0GxJt44Ony/jKGQiTT7KGDEalI4ETwROLu4YUwswyxlRi6GgNOXS12+GnggTxNr8ncRL67XT3vxe1iTD2XkebXWaOD5ep0cTXEN7xB89Br5BdpqEwUMVAp5AmN6uL0IPG3hEWz1ndGX40XVq7og=="
+                SecurityCredential = B2CsecurityCred //"UzQmvbTuYv6eBJh+ECRhsnpESnvXAiqvrsG5gKPDnrgTVgIJfNhOd0REVcg9Y1xOrkkbv2+oxCOQnMZ1/PFHYaX50ikChzE/P9I1npZm/PWhZYmxWaddz9QmxyNF9XPiADXgj83SFvsrvbQ/ukSzSP+NeA/O2KOOjiu41lOijIXdNCo/Orvg/BIKAwbsEayhWCm0GxJt44Ony/jKGQiTT7KGDEalI4ETwROLu4YUwswyxlRi6GgNOXS12+GnggTxNr8ncRL67XT3vxe1iTD2XkebXWaOD5ep0cTXEN7xB89Br5BdpqEwUMVAp5AmN6uL0IPG3hEWz1ndGX40XVq7og=="
             };
 
             var b2cRequest = await _mpesaClient.MakeB2CPaymentAsync(b2c, accesstoken, "mpesa/b2c/v1/paymentrequest");
@@ -109,7 +120,7 @@ namespace WebApplication1.Controllers
                 CommandID = "MerchantToMerchantTransfer",
                 QueueTimeOutURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
                 RecieverIdentifierType = "4",
-                SecurityCredential = "oChG9b+xdWz10sL8Suz5HP2rQX/rqwMKOVgHStsYBdjCc+brq3ogPr8LMNV2lAK8WFNZbbaXMXWCFApnR/yhe+yq62oJOaSKs/4AywWGZOJ5h2j1z4UCGx19Ss1mR7nsMvTxZqhNH0trwKme01gy1vyiPMsWzML6gux+KxQvGlgWTulLDNBNOBQYAxNiGI/rGJYabtWK4m7iNWFTpzYcGbZBdIILmjK79lFjMVEmKYXuPO/zfl3gTQ7nWzDySoM+UyIwCBl29lr3BKMylj7RPqpfXBkLGe6K3MvBS0KN+IQwIYirFRae0hsQ9mqaHciLN5+Th/QbPhakBrforg6Mvw==",
+                SecurityCredential = B2CsecurityCred, //"oChG9b+xdWz10sL8Suz5HP2rQX/rqwMKOVgHStsYBdjCc+brq3ogPr8LMNV2lAK8WFNZbbaXMXWCFApnR/yhe+yq62oJOaSKs/4AywWGZOJ5h2j1z4UCGx19Ss1mR7nsMvTxZqhNH0trwKme01gy1vyiPMsWzML6gux+KxQvGlgWTulLDNBNOBQYAxNiGI/rGJYabtWK4m7iNWFTpzYcGbZBdIILmjK79lFjMVEmKYXuPO/zfl3gTQ7nWzDySoM+UyIwCBl29lr3BKMylj7RPqpfXBkLGe6K3MvBS0KN+IQwIYirFRae0hsQ9mqaHciLN5+Th/QbPhakBrforg6Mvw==",
                 SenderIdentifierType = "4",
                 ResultURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
                 Remarks = "payment"

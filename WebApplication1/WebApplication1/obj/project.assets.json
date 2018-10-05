@@ -2601,7 +2601,7 @@
           }
         }
       },
-      "MpesaLib/2.1.0": {
+      "MpesaLib/2.1.2.2": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
@@ -6781,18 +6781,15 @@
         "version.txt"
       ]
     },
-    "MpesaLib/2.1.0": {
-      "sha512": "SUhZIDdq7/Y+yD/93OW3G/6sTzCstlOOMnjaWje4xoUQqrY7eQOPQi2/TaC/06ArFcpgz1Kceb9a4eVcZRq9xQ==",
+    "MpesaLib/2.1.2.2": {
+      "sha512": "lVUnn5h8nu9O14gYO/RyagvWuSSM+qFa6hp69f2dqFjXZZ+/PCuztSQvkmUwOIIqtJcKMf+gxmbUf4CVi0eWKw==",
       "type": "package",
-      "path": "mpesalib/2.1.0",
+      "path": "mpesalib/2.1.2.2",
       "files": [
         "lib/net40/MpesaLib.dll",
-        "lib/net40/MpesaLib.pdb",
         "lib/net45/MpesaLib.dll",
-        "lib/net45/MpesaLib.pdb",
         "lib/netstandard2.0/MpesaLib.dll",
-        "lib/netstandard2.0/MpesaLib.pdb",
-        "mpesalib.2.1.0.nupkg.sha512",
+        "mpesalib.2.1.2.2.nupkg.sha512",
         "mpesalib.nuspec"
       ]
     },
@@ -11526,7 +11523,7 @@
     ".NETCoreApp,Version=v2.1": [
       "Microsoft.AspNetCore.App >= 2.1.3",
       "Microsoft.NETCore.App >= 2.1.0",
-      "MpesaLib >= 2.1.0"
+      "MpesaLib >= 2.1.2.2"
     ]
   },
   "packageFolders": {
@@ -11587,7 +11584,7 @@
           },
           "MpesaLib": {
             "target": "Package",
-            "version": "[2.1.0, )"
+            "version": "[2.1.2.2, )"
           }
         },
         "imports": [
