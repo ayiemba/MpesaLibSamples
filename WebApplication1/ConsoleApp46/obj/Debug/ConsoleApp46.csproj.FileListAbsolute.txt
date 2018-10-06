@@ -1,0 +1,11 @@
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\ConsoleApp46\bin\Debug\ConsoleApp46.exe.config
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\ConsoleApp46\bin\Debug\ConsoleApp46.exe
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\ConsoleApp46\bin\Debug\ConsoleApp46.pdb
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\ConsoleApp46\bin\Debug\MpesaLib.dll
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\ConsoleApp46\bin\Debug\MpesaLib.pdb
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\ConsoleApp46\bin\Debug\Newtonsoft.Json.dll
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\ConsoleApp46\obj\Debug\ConsoleApp46.csprojAssemblyReference.cache
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\ConsoleApp46\obj\Debug\ConsoleApp46.csproj.CoreCompileInputs.cache
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\ConsoleApp46\obj\Debug\ConsoleApp46.csproj.CopyComplete
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\ConsoleApp46\obj\Debug\ConsoleApp46.exe
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\ConsoleApp46\obj\Debug\ConsoleApp46.pdb

@@ -1,0 +1,10 @@
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleAppCore21\bin\Debug\netcoreapp2.1\ConsoleAppCore21.deps.json
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleAppCore21\bin\Debug\netcoreapp2.1\ConsoleAppCore21.runtimeconfig.json
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleAppCore21\bin\Debug\netcoreapp2.1\ConsoleAppCore21.runtimeconfig.dev.json
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleAppCore21\bin\Debug\netcoreapp2.1\ConsoleAppCore21.dll
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleAppCore21\bin\Debug\netcoreapp2.1\ConsoleAppCore21.pdb
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleAppCore21\obj\Debug\netcoreapp2.1\ConsoleAppCore21.csproj.CoreCompileInputs.cache
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleAppCore21\obj\Debug\netcoreapp2.1\ConsoleAppCore21.AssemblyInfoInputs.cache
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleAppCore21\obj\Debug\netcoreapp2.1\ConsoleAppCore21.AssemblyInfo.cs
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleAppCore21\obj\Debug\netcoreapp2.1\ConsoleAppCore21.dll
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleAppCore21\obj\Debug\netcoreapp2.1\ConsoleAppCore21.pdb

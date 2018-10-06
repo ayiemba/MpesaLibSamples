@@ -1,15 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
-using MpesaLib.Clients;
+﻿using MpesaLib.Clients;
 using MpesaLib.Helpers;
-using MpesaLib.Interfaces;
 using MpesaLib.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace WebApplication2.Controllers
@@ -43,11 +38,11 @@ namespace WebApplication2.Controllers
             //Initialize MpesaClient and Pass in httpClient
             var _mpesaClient = new MpesaClient(httpClient);
 
-            var consumerKey = "oxmArTv2zATD0W1KPcHTdldprn9obbAS";//_configuration["MpesaConfiguration:ConsumerKey"];
+            var consumerKey = "your consumer key from daraja";
 
-            var consumerSecret = "7MKBNPHjkmmFnJAY";//_configuration["MpesaConfiguration:ConsumerSecret"];
+            var consumerSecret = "your consumer secret from daraja";
 
-            var passKey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";// _configuration["MpesaConfiguration:PassKey"];
+            var passKey = "your LNMO passkey from daraja/org portal";
 
             //Request Token (tokens expires after an hour, implement some chaing mechnism)
             var accesstoken = await _mpesaClient.GetAuthTokenAsync(consumerKey, consumerSecret, "oauth/v1/generate?grant_type=client_credentials");
@@ -56,13 +51,13 @@ namespace WebApplication2.Controllers
             //Register C2B Urls Object
             CustomerToBusinessRegister registerUrl = new CustomerToBusinessRegister
             {
-                ConfirmationURL = "https://demo.osl.co.ke:7575/geospatial",
-                ValidationURL = "https://demo.osl.co.ke:7575/geospatial",
+                ConfirmationURL = "https://blablabala/confirm",
+                ValidationURL = "https://blablabala/validate",
                 ResponseType = "Cancelled",
                 ShortCode = "603047"
             };
 
-            //var ulrregistration = await _mpesaClient.RegisterC2BUrlAsync(registerUrl, accesstoken, "mpesa/c2b/v1/registerurl");
+            var ulrregistration = await _mpesaClient.RegisterC2BUrlAsync(registerUrl, accesstoken, "mpesa/c2b/v1/registerurl");
 
 
 
@@ -88,7 +83,7 @@ namespace WebApplication2.Controllers
                 PartyA = "2547XXXXXXX", //please replace with your own number
                 PartyB = "174379",
                 BusinessShortCode = "174379",
-                CallBackURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
+                CallBackURL = "https://blablabala/callback",
                 PhoneNumber = "2547XXXXXXXX", //replace with your own number
                 Passkey = passKey,
                 TransactionDesc = "test"
@@ -96,17 +91,16 @@ namespace WebApplication2.Controllers
             };
 
             //LipanaMpesaOnline (STK Push) request
-           // var lipaNaMpesa = await _mpesaClient.MakeLipaNaMpesaOnlinePaymentAsync(lipaOnline, accesstoken, "mpesa/stkpush/v1/processrequest");
+            var lipaNaMpesa = await _mpesaClient.MakeLipaNaMpesaOnlinePaymentAsync(lipaOnline, accesstoken, "mpesa/stkpush/v1/processrequest");
 
 
 
             //Security Credentials
-            string certificate = @"C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication1\Certificate\prod.cer";
-
+            string certificate = @"C:\Dev\MpesaIntegration\MpesaLibSamples\Certificate\prod.cer";
 
             var securityCred = Credentials.EncryptPassword(certificate, "971796");
 
-            Console.WriteLine(securityCred);
+            Console.WriteLine(securityCred); //I just want to see the credential, nothing mcuh here really
 
             //B2C Object
             BusinessToCustomer b2c = new BusinessToCustomer
@@ -118,9 +112,9 @@ namespace WebApplication2.Controllers
                 Occasion = "test",
                 PartyA = "603047",
                 PartyB = "254708374149",
-                QueueTimeOutURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
-                ResultURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
-                SecurityCredential = securityCred //"UzQmvbTuYv6eBJh+ECRhsnpESnvXAiqvrsG5gKPDnrgTVgIJfNhOd0REVcg9Y1xOrkkbv2+oxCOQnMZ1/PFHYaX50ikChzE/P9I1npZm/PWhZYmxWaddz9QmxyNF9XPiADXgj83SFvsrvbQ/ukSzSP+NeA/O2KOOjiu41lOijIXdNCo/Orvg/BIKAwbsEayhWCm0GxJt44Ony/jKGQiTT7KGDEalI4ETwROLu4YUwswyxlRi6GgNOXS12+GnggTxNr8ncRL67XT3vxe1iTD2XkebXWaOD5ep0cTXEN7xB89Br5BdpqEwUMVAp5AmN6uL0IPG3hEWz1ndGX40XVq7og=="
+                QueueTimeOutURL = "https://blablabala/callback",
+                ResultURL = "https://blablabala/callback",
+                SecurityCredential = securityCred 
             };
 
             //B2C request
@@ -135,12 +129,12 @@ namespace WebApplication2.Controllers
                 Amount = "1",
                 PartyA = "603047",
                 PartyB = "600000",
-                CommandID = "MerchantToMerchantTransfer",
-                QueueTimeOutURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
+                CommandID = "MerchantToMerchantTransfer", //chack correct command from daraja, don't use commands blindly!
+                QueueTimeOutURL = "https://blablabala/callback",
                 RecieverIdentifierType = "4",
-                SecurityCredential = securityCred, // "oChG9b+xdWz10sL8Suz5HP2rQX/rqwMKOVgHStsYBdjCc+brq3ogPr8LMNV2lAK8WFNZbbaXMXWCFApnR/yhe+yq62oJOaSKs/4AywWGZOJ5h2j1z4UCGx19Ss1mR7nsMvTxZqhNH0trwKme01gy1vyiPMsWzML6gux+KxQvGlgWTulLDNBNOBQYAxNiGI/rGJYabtWK4m7iNWFTpzYcGbZBdIILmjK79lFjMVEmKYXuPO/zfl3gTQ7nWzDySoM+UyIwCBl29lr3BKMylj7RPqpfXBkLGe6K3MvBS0KN+IQwIYirFRae0hsQ9mqaHciLN5+Th/QbPhakBrforg6Mvw==",
+                SecurityCredential = securityCred, 
                 SenderIdentifierType = "4",
-                ResultURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
+                ResultURL = "https://blablabala/callback",
                 Remarks = "payment"
             };
 
@@ -149,14 +143,14 @@ namespace WebApplication2.Controllers
 
             /*
              * I am printing the results on the About page
-             * You should deserialize and do other stuff with the results
+             * You should actually deserialize and do meaningful stuff with the results
              */
             
             ViewData["Message0"] = securityCred;
 
             ViewData["Message1"] = c2bRequest;
 
-            //ViewData["Message2"] = lipaNaMpesa;
+            ViewData["Message2"] = lipaNaMpesa;
 
             ViewData["Message3"] = b2cRequest;
 

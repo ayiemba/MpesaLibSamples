@@ -34,6 +34,9 @@ C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\Microsoft.Web.Infrastructure.dll
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\MpesaLib.dll
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\Newtonsoft.Json.dll
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.PrivateKeyDecoder.dll
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.PublicKeyDecoder.dll
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.X509Certificate2.Provider.dll
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\RestSharp.dll
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\System.Web.Helpers.dll
@@ -45,7 +48,11 @@ C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\System.Web.WebPages.Razor.dll
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\WebGrease.dll
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\MpesaLib.pdb
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\Newtonsoft.Json.xml
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.PrivateKeyDecoder.xml
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.PublicKeyDecoder.xml
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.X509Certificate2.Provider.xml
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\RestSharp.xml
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\System.Web.Helpers.xml
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\System.Web.Mvc.xml
@@ -63,9 +70,3 @@ C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\obj
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\obj\Debug\WebApplication2.csproj.CopyComplete
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\obj\Debug\WebApplication2.dll
 C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\obj\Debug\WebApplication2.pdb
-C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.PrivateKeyDecoder.dll
-C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.PublicKeyDecoder.dll
-C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.X509Certificate2.Provider.dll
-C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.PrivateKeyDecoder.xml
-C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.PublicKeyDecoder.xml
-C:\Dev\Work\MpesaIntegration\MpesaLibSamples\WebApplication1\WebApplication2\bin\OpenSSL.X509Certificate2.Provider.xml

@@ -2601,7 +2601,7 @@
           }
         }
       },
-      "MpesaLib/2.1.2.2": {
+      "MpesaLib/2.1.1": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
@@ -6781,15 +6781,19 @@
         "version.txt"
       ]
     },
-    "MpesaLib/2.1.2.2": {
-      "sha512": "lVUnn5h8nu9O14gYO/RyagvWuSSM+qFa6hp69f2dqFjXZZ+/PCuztSQvkmUwOIIqtJcKMf+gxmbUf4CVi0eWKw==",
+    "MpesaLib/2.1.1": {
+      "sha512": "6jNxOj7lD5CfPdIUrKgBh7kb+daTmwBy2Bqsie7jlWCbnMw7kH+drwhogCwTA8qjjgDyD+JFRLZ/GK7yJWfXPg==",
       "type": "package",
-      "path": "mpesalib/2.1.2.2",
+      "path": "mpesalib/2.1.1",
       "files": [
+        ".signature.p7s",
         "lib/net40/MpesaLib.dll",
+        "lib/net40/MpesaLib.pdb",
         "lib/net45/MpesaLib.dll",
+        "lib/net45/MpesaLib.pdb",
         "lib/netstandard2.0/MpesaLib.dll",
-        "mpesalib.2.1.2.2.nupkg.sha512",
+        "lib/netstandard2.0/MpesaLib.pdb",
+        "mpesalib.2.1.1.nupkg.sha512",
         "mpesalib.nuspec"
       ]
     },
@@ -11523,7 +11527,7 @@
     ".NETCoreApp,Version=v2.1": [
       "Microsoft.AspNetCore.App >= 2.1.3",
       "Microsoft.NETCore.App >= 2.1.0",
-      "MpesaLib >= 2.1.2.2"
+      "MpesaLib >= 2.1.1"
     ]
   },
   "packageFolders": {
@@ -11533,9 +11537,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\Work\\MpesaIntegration\\MpesaLibSamples\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
-      "projectName": "WebApplication1",
-      "projectPath": "C:\\Dev\\Work\\MpesaIntegration\\MpesaLibSamples\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "C:\\Dev\\Work\\MpesaIntegration\\MpesaLibSamples\\WebApplication1\\WebApplication1\\WebAppNetCore21.csproj",
+      "projectName": "WebAppNetCore21",
+      "projectPath": "C:\\Dev\\Work\\MpesaIntegration\\MpesaLibSamples\\WebApplication1\\WebApplication1\\WebAppNetCore21.csproj",
       "packagesPath": "C:\\Users\\Eayiemba\\.nuget\\packages\\",
       "outputPath": "C:\\Dev\\Work\\MpesaIntegration\\MpesaLibSamples\\WebApplication1\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
@@ -11550,12 +11554,9 @@
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Dev\\LocalNugets": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\Eayiemba\\Downloads\\mpesalib-636736326564429235\\nuget\\packages": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://www.myget.org/F/aspnet-contrib/api/v3/index.json": {},
-        "https://www.myget.org/F/mpesalib/api/v3/index.json": {},
         "https://www.myget.org/F/signalr-alpha/api/v3/index.json": {}
       },
       "frameworks": {
@@ -11584,7 +11585,7 @@
           },
           "MpesaLib": {
             "target": "Package",
-            "version": "[2.1.2.2, )"
+            "version": "[2.1.1, )"
           }
         },
         "imports": [

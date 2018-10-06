@@ -1,0 +1,11 @@
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp45\bin\Debug\ConsoleApp45.exe.config
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp45\bin\Debug\ConsoleApp45.exe
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp45\bin\Debug\ConsoleApp45.pdb
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp45\bin\Debug\MpesaLib.dll
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp45\bin\Debug\MpesaLib.pdb
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp45\bin\Debug\Newtonsoft.Json.dll
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp45\obj\Debug\ConsoleApp45.csprojAssemblyReference.cache
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp45\obj\Debug\ConsoleApp45.csproj.CoreCompileInputs.cache
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp45\obj\Debug\ConsoleApp45.csproj.CopyComplete
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp45\obj\Debug\ConsoleApp45.exe
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp45\obj\Debug\ConsoleApp45.pdb

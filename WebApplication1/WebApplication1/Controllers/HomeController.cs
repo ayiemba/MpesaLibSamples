@@ -1,14 +1,12 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using MpesaLib.Clients;
+using MpesaLib.Helpers;
 using MpesaLib.Interfaces;
 using MpesaLib.Models;
-using MpesaLib.Helpers;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using WebApplication1.Models;
-using System.Security.Cryptography.X509Certificates;
 
 namespace WebApplication1.Controllers
 {
@@ -44,13 +42,13 @@ namespace WebApplication1.Controllers
             //C2BRegisterUrls
             CustomerToBusinessRegister registerUrl = new CustomerToBusinessRegister
             {
-                ConfirmationURL = "https://demo.osl.co.ke:7575/geospatial",
-                ValidationURL = "https://demo.osl.co.ke:7575/geospatial",
+                ConfirmationURL = "https://blablabala/confirm",
+                ValidationURL = "https://blablabala/validate",
                 ResponseType = "Cancelled",
                 ShortCode = "603047"
             };
 
-            //var ulrregistration = await _mpesaClient.RegisterC2BUrlAsync(registerUrl, accesstoken, "mpesa/c2b/v1/registerurl");
+            var ulrregistration = await _mpesaClient.RegisterC2BUrlAsync(registerUrl, accesstoken, "mpesa/c2b/v1/registerurl");
 
 
             //C2B
@@ -73,7 +71,7 @@ namespace WebApplication1.Controllers
                 PartyA = "254725589166",
                 PartyB = "174379",
                 BusinessShortCode = "174379",
-                CallBackURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
+                CallBackURL = "https://blablabala/callback",
                 PhoneNumber = "254725589166",
                 Passkey = passKey,
                 TransactionDesc = "test"
@@ -88,7 +86,7 @@ namespace WebApplication1.Controllers
 
             var B2CsecurityCred = Credentials.EncryptPassword(certificate, "971796");
 
-            Console.WriteLine(B2CsecurityCred);
+            Console.WriteLine(B2CsecurityCred); //I just want to see credential
 
 
             //B2C
@@ -101,9 +99,9 @@ namespace WebApplication1.Controllers
                 Occasion = "test",
                 PartyA = "603047",
                 PartyB = "254708374149",
-                QueueTimeOutURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
-                ResultURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
-                SecurityCredential = B2CsecurityCred //"UzQmvbTuYv6eBJh+ECRhsnpESnvXAiqvrsG5gKPDnrgTVgIJfNhOd0REVcg9Y1xOrkkbv2+oxCOQnMZ1/PFHYaX50ikChzE/P9I1npZm/PWhZYmxWaddz9QmxyNF9XPiADXgj83SFvsrvbQ/ukSzSP+NeA/O2KOOjiu41lOijIXdNCo/Orvg/BIKAwbsEayhWCm0GxJt44Ony/jKGQiTT7KGDEalI4ETwROLu4YUwswyxlRi6GgNOXS12+GnggTxNr8ncRL67XT3vxe1iTD2XkebXWaOD5ep0cTXEN7xB89Br5BdpqEwUMVAp5AmN6uL0IPG3hEWz1ndGX40XVq7og=="
+                QueueTimeOutURL = "https://blablabala/callback",
+                ResultURL = "https://blablabala/callback",
+                SecurityCredential = B2CsecurityCred 
             };
 
             var b2cRequest = await _mpesaClient.MakeB2CPaymentAsync(b2c, accesstoken, "mpesa/b2c/v1/paymentrequest");
@@ -117,18 +115,18 @@ namespace WebApplication1.Controllers
                 Amount = "1",
                 PartyA = "603047",
                 PartyB = "600000",
-                CommandID = "MerchantToMerchantTransfer",
-                QueueTimeOutURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
+                CommandID = "MerchantToMerchantTransfer",// Please chack the correct command from Daraja
+                QueueTimeOutURL = "https://blablabala/callback",
                 RecieverIdentifierType = "4",
-                SecurityCredential = B2CsecurityCred, //"oChG9b+xdWz10sL8Suz5HP2rQX/rqwMKOVgHStsYBdjCc+brq3ogPr8LMNV2lAK8WFNZbbaXMXWCFApnR/yhe+yq62oJOaSKs/4AywWGZOJ5h2j1z4UCGx19Ss1mR7nsMvTxZqhNH0trwKme01gy1vyiPMsWzML6gux+KxQvGlgWTulLDNBNOBQYAxNiGI/rGJYabtWK4m7iNWFTpzYcGbZBdIILmjK79lFjMVEmKYXuPO/zfl3gTQ7nWzDySoM+UyIwCBl29lr3BKMylj7RPqpfXBkLGe6K3MvBS0KN+IQwIYirFRae0hsQ9mqaHciLN5+Th/QbPhakBrforg6Mvw==",
+                SecurityCredential = B2CsecurityCred, 
                 SenderIdentifierType = "4",
-                ResultURL = "https://peternjeru.co.ke/safdaraja/api/callback.php",
+                ResultURL = "https://blablabala/callback",
                 Remarks = "payment"
             };
 
             var b2brequest = await _mpesaClient.MakeB2BPaymentAsync(b2bobject, accesstoken, "mpesa/b2b/v1/paymentrequest");
 
-            //ViewData["Message0"] = ulrregistration;
+            ViewData["Message0"] = ulrregistration;
 
             ViewData["Message1"] = c2bRequest; 
 
@@ -144,22 +142,22 @@ namespace WebApplication1.Controllers
 
 
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
+        //public IActionResult Contact()
+        //{
+        //    ViewData["Message"] = "Your contact page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
     }
 }

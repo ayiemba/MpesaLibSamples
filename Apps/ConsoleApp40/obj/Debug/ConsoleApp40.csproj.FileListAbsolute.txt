@@ -1,0 +1,2 @@
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp40\obj\Debug\ConsoleApp40.csproj.CoreCompileInputs.cache
+C:\Dev\Work\MpesaIntegration\MpesaLibSamples\Apps\ConsoleApp40\obj\Debug\ConsoleApp40.csprojAssemblyReference.cache
