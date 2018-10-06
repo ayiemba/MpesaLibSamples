@@ -68,11 +68,11 @@ namespace WebApplication1.Controllers
             {
                 AccountReference = "test",
                 Amount = "1",
-                PartyA = "254725589166",
+                PartyA = "2547Xxxxxxxxx",
                 PartyB = "174379",
                 BusinessShortCode = "174379",
                 CallBackURL = "https://blablabala/callback",
-                PhoneNumber = "254725589166",
+                PhoneNumber = "2547xxxxxxxxx",
                 Passkey = passKey,
                 TransactionDesc = "test"
 
