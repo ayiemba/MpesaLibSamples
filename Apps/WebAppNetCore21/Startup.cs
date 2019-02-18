@@ -9,9 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MpesaLib.Clients;
-using MpesaLib.Interfaces;
-using MpesaLib.Models;
+using MpesaLib;
+
 
 namespace WebApplication1
 {
@@ -35,10 +34,10 @@ namespace WebApplication1
             });
 
             //ADD MPESA SERVICE
-            services.AddHttpClient<IMpesaClient, MpesaClient>(options => options.BaseAddress = new Uri("https://sandbox.safaricom.co.ke/"));
+            services.AddHttpClient<IMpesaClient, MpesaClient>(options => options.BaseAddress = RequestEndPoint.SandboxBaseAddress);
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
         }
 
