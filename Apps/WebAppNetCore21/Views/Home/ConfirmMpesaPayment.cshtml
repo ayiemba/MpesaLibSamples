@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="mpesaresponse">
+    <div>
+        @if(@ViewBag.ResultCode == "0")
+        {
+        <p>
+            <i class="fas fa-3x fa-check-circle success-2-icon"></i>
+            <span> @ViewBag.ResultDescription</span><span> Thank you!</span>
+        </p>
+        }else
+        {
+        <p>
+            <i class="fas fa-3x fa-times-circle fail-icon"></i>
+            <span> @ViewBag.ResultDescription</span>
+        </p>
+        <p>Something went wrong with the transaction. Please try again</p>
+        }
+
+
+        <p>Customer Number: @ViewBag.CustomerNumber</p>
+    </div>
+</div>

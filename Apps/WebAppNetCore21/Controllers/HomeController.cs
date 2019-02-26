@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using WebApplication1.Models;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using WebAppNetCore.Responses;
+using Microsoft.AspNetCore.Http;
 
 namespace WebApplication1.Controllers
 {
@@ -31,30 +34,7 @@ namespace WebApplication1.Controllers
         private string ConsumerKey { get { return _configuration["MpesaConfiguration:ConsumerKey"]; } }
         private string ConsumerSecret { get { return _configuration["MpesaConfiguration:ConsumerSecret"]; } }
         private string PassKey { get { return _configuration["MpesaConfiguration:PassKey"]; } }
-        private string AccessToken { get { return GetToken(); } }
-
-        //TODO: make this method async
-        private string GetToken()
-        {
-            var cacheKey = "MpesaAccessToken";
-
-            if (_memoryCache.TryGetValue(cacheKey, out string accessToken))
-            {
-                _logger.LogInformation("Getting token from memory....."); 
-                return accessToken;
-            }
-            else
-            {
-                _logger.LogInformation("Getting token from Mpesa Server....."); 
-                accessToken =  _mpesaClient.GetAuthToken(ConsumerKey, ConsumerSecret, RequestEndPoint.AuthToken);
-
-                var cacheEntryOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(59));
-
-                _memoryCache.Set(cacheKey, accessToken, cacheEntryOptions);
-
-                return accessToken;
-            }
-        }
+        private string AccessToken { get { return GetToken(); } }       
 
 
         public IActionResult Index()
@@ -62,18 +42,23 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult New()
+        {            
+            return View();
+        }
+
         //Lipa Na Mpesa Online - STK Push
-        public async Task<IActionResult> LNMO()
+        public async Task<IActionResult> LNMO(IFormCollection collection)
         {                   
             LipaNaMpesaOnlineDto lipaOnline = new LipaNaMpesaOnlineDto
             {
-                AccountReference = "Sample",
-                Amount = "2",                   //replace the amount you want to test. Max is KSh 70,000 per transaction
-                PartyA = "",        //replace this number with yours or clients safcom number
+                AccountReference = "MpesaLib Sample",
+                Amount = collection["amount"],                   
+                PartyA = collection["phone_number"],        
                 PartyB = _configuration["MpesaConfiguration:LNMOshortCode"],
                 BusinessShortCode = _configuration["MpesaConfiguration:LNMOshortCode"],
                 CallBackURL = _configuration["MpesaConfiguration:CallBackUrl"],
-                PhoneNumber = "",   //replace this number with yours or clients safcom number
+                PhoneNumber = collection["phone_number"],  
                 Passkey = PassKey,
                 TransactionDesc = "MpesaLib Sample"
 
@@ -82,12 +67,92 @@ namespace WebApplication1.Controllers
             var lipaNaMpesa = await _mpesaClient.MakeLipaNaMpesaOnlinePaymentAsync(lipaOnline, AccessToken, RequestEndPoint.LipaNaMpesaOnline);
 
 
-            ViewData["Message2"] = lipaNaMpesa;
+            //ViewData["Message2"] = lipaNaMpesa;
+
+            return RedirectToAction("ShowMpesaResult", new { response = lipaNaMpesa, customerNumber = collection["phone_number"], invoicenumber = collection["invoice_number"] });           
+        }
+
+
+        [HttpPost("/mpesatransactionstatus")]
+        public async Task<IActionResult> MpesaOnlineTransactionStatus(IFormCollection formcollection)
+        {
+
+            var accesstoken = await _mpesaClient.GetAuthTokenAsync(ConsumerKey, ConsumerSecret, RequestEndPoint.AuthToken);
+
+            var LNMOQuery = new LipaNaMpesaQueryDto
+            {
+                BusinessShortCode = "174379",
+                CheckoutRequestID = formcollection["checkoutRequestId"],
+                Passkey = PassKey
+            };
+
+            var queryResult = await _mpesaClient.QueryLipaNaMpesaTransactionAsync(LNMOQuery, accesstoken, RequestEndPoint.QueryLipaNaMpesaOnlieTransaction);
+
+
+
+            return RedirectToAction("ConfirmMpesaPayment", new { response = queryResult, customerNumber = formcollection["phone_number"] });
+
+        }
+
+
+        [Route("/showmpesaresult")]
+        public IActionResult ShowMpesaResult(string response, string customerNumber, string invoicenumber)
+        {
+
+            //deserialize response and query transaction stastus
+            var res = JsonConvert.DeserializeObject<MpesaStkResponse>(response);
+
+            //pass data to view/page via viewbag
+            ViewBag.ResponseCode = res.ResponseCode;
+            ViewBag.CheckoutRequestId = res.CheckoutRequestID;
+            ViewBag.MerchantRequestId = res.MerchantRequestID;
+            ViewBag.CustomerMessage = res.CustomerMessage;
+            ViewBag.ResponseDescription = res.ResponseDescription;
+            ViewBag.CustomerNumber = customerNumber;
+
+            return View();
+        }
+
+        [Route("/mpesaconfirmation")]
+        public IActionResult ConfirmMpesaPayment(string response, string customerNumber)
+        {
+            ////deserialize response and query transaction stastus
+            var res = JsonConvert.DeserializeObject<LNMOQueryResponse>(response);
+
+            //handle edge cases and errors  
+
+            //pass data to view/page via viewbag
+            ViewBag.ResultDescription = res.ResultDesc;
+            ViewBag.ResultCode = res.ResultCode;
+            ViewBag.ResponseDescription = res.ResponseDescription;
+            ViewBag.CustomerNumber = customerNumber;
 
             return View();
         }
 
 
+        //TODO: make this method async
+        private string GetToken()
+        {
+            var cacheKey = "MpesaAccessToken";
+
+            if (_memoryCache.TryGetValue(cacheKey, out string accessToken))
+            {
+                _logger.LogInformation("Getting token from memory.....");
+                return accessToken;
+            }
+            else
+            {
+                _logger.LogInformation("Getting token from Mpesa Server.....");
+                accessToken = _mpesaClient.GetAuthToken(ConsumerKey, ConsumerSecret, RequestEndPoint.AuthToken);
+
+                var cacheEntryOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(59));
+
+                _memoryCache.Set(cacheKey, accessToken, cacheEntryOptions);
+
+                return accessToken;
+            }
+        }
 
 
     }

@@ -1,12 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <UserSecretsId>6d87e500-2739-44cf-8d61-47d20cc2624c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\images\lipanampesa.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
     <PackageReference Include="MpesaLib" Version="3.2.1" />
   </ItemGroup>
 

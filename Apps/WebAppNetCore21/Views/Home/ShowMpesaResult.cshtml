@@ -1,0 +1,63 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration configuration
+@{
+    Layout = "_Layout";
+}
+
+<div class="mpesaresponse">
+    <div>
+
+        @if (@ViewBag.ResponseCode == "0")
+        {
+        <div>
+            <p>
+                <i class="fas fa-3x fa-check-circle success-1-icon"></i>
+                <span> @ViewBag.ResponseDescription</span>
+            </p>
+            <p>
+                Check your phone and Enter M-PESA PIN to complete transaction.
+            </p>
+            <p>
+                Your Number: @ViewBag.CustomerNumber
+            </p>
+            <p>After Completing the payment on your phone Click the below button for confirmation</p>
+
+            <form id="mpesaconfirmform" method="post" action="/mpesatransactionstatus">
+
+                <input name="checkoutRequestId" value="@ViewBag.CheckoutRequestId" type="hidden" class="form-control" />
+
+                <input name="phone_number" value="@ViewBag.CustomerNumber" type="hidden" class="form-control" />
+                <div class="g-recaptcha" data-sitekey="@(configuration["ReCaptcha:SiteKey"])"></div>
+                <br>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <button type="submit" id="btnSubmit" class="btn btn-success">Confirm Payment</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        }
+        else
+        {
+        <div>
+            <p>
+                <i class="fas fa-3x fa-times-circle fail-icon"></i>
+                Something went wrong while processing request, please try again.
+            </p>
+            <p>
+                Your Number: @ViewBag.CustomerNumber
+            </p>
+            <p>Response Description: @ViewBag.ResponseDescription</p>
+            <p>Customer Message: @ViewBag.CustomerMessage</p>
+        </div>
+
+        }
+
+        @*<p>
+                Checkout ID:  @ViewBag.CheckoutRequestId
+            </p>
+            <p>
+                Merchant Request ID:  @ViewBag.MerchantRequestId
+            </p>*@
+
+    </div>
+</div>
