@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using WebAppNetCore.Responses;
 using Microsoft.AspNetCore.Http;
+using MpesaLib.Helpers.Exceptions;
 
 namespace WebAppNetCore.Controllers
 {
@@ -51,20 +52,34 @@ namespace WebAppNetCore.Controllers
         public async Task<IActionResult> LNMO(IFormCollection collection)
         {                   
             LipaNaMpesaOnlineDto lipaOnline = new LipaNaMpesaOnlineDto
+            (
+                _configuration["MpesaConfiguration:LNMOshortCode"], 
+                DateTime.Now, 
+                TransactType.CustomerPayBillOnline, 
+                collection["amount"], 
+                collection["phone_number"],
+                _configuration["MpesaConfiguration:LNMOshortCode"], 
+                collection["phone_number"], 
+                _configuration["MpesaConfiguration:CallBackUrl"], 
+                "MpesaLib Sample", 
+                "MpesaLib Sample", 
+                PassKey              
+
+            );
+
+            var lipaNaMpesa = "";
+
+            try
             {
-                AccountReference = "MpesaLib Sample",
-                Amount = collection["amount"],                   
-                PartyA = collection["phone_number"],        
-                PartyB = _configuration["MpesaConfiguration:LNMOshortCode"],
-                BusinessShortCode = _configuration["MpesaConfiguration:LNMOshortCode"],
-                CallBackURL = _configuration["MpesaConfiguration:CallBackUrl"],
-                PhoneNumber = collection["phone_number"],  
-                Passkey = PassKey,
-                TransactionDesc = "MpesaLib Sample"
+                lipaNaMpesa = await _mpesaClient.MakeLipaNaMpesaOnlinePaymentAsync(lipaOnline, AccessToken, RequestEndPoint.LipaNaMpesaOnline);
+            }
+            catch (MpesaApiException ex)
+            {
+                _logger.LogError(ex.Content);
+                return BadRequest();
+            }
 
-            };
-
-            var lipaNaMpesa = await _mpesaClient.MakeLipaNaMpesaOnlinePaymentAsync(lipaOnline, AccessToken, RequestEndPoint.LipaNaMpesaOnline);
+            
 
 
             //ViewData["Message2"] = lipaNaMpesa;
@@ -80,14 +95,14 @@ namespace WebAppNetCore.Controllers
             var accesstoken = await _mpesaClient.GetAuthTokenAsync(ConsumerKey, ConsumerSecret, RequestEndPoint.AuthToken);
 
             var LNMOQuery = new LipaNaMpesaQueryDto
-            {
-                BusinessShortCode = "174379",
-                CheckoutRequestID = formcollection["checkoutRequestId"],
-                Passkey = PassKey
-            };
+            (
+                "174379", 
+                PassKey,
+                DateTime.Now, 
+                formcollection["checkoutRequestId"] 
+            );
 
             var queryResult = await _mpesaClient.QueryLipaNaMpesaTransactionAsync(LNMOQuery, accesstoken, RequestEndPoint.QueryLipaNaMpesaOnlieTransaction);
-
 
 
             return RedirectToAction("ConfirmMpesaPayment", new { response = queryResult, customerNumber = formcollection["phone_number"] });
