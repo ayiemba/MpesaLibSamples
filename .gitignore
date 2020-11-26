@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 Apps/WebApplication1/appsettings.Development.json
 Apps/WebAppNetCore/appsettings.Development.json
+Apps/.vs/Apps/v16/.suo
