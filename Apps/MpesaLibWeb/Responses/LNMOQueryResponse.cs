@@ -1,4 +1,4 @@
-﻿namespace WebAppNetCore.Responses
+﻿namespace MpesaLibWeb.Responses
 {
     public class LNMOQueryResponse
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace WebAppNetCore.Models
+namespace MpesaLibWeb.Models
 {
     public class ErrorViewModel
     {

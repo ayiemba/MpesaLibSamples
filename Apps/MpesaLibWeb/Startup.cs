@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 using MpesaLib;
 
 
-namespace WebAppNetCore
+namespace MpesaLibWeb
 {
     public class Startup
     {

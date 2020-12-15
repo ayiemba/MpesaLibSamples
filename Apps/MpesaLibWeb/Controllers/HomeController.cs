@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using WebAppNetCore.Responses;
+using MpesaLibWeb.Responses;
 using Microsoft.AspNetCore.Http;
 using MpesaLib.Helpers.Exceptions;
 
-namespace WebAppNetCore.Controllers
+namespace MpesaLibWeb.Controllers
 {
     public class HomeController : Controller
     {
